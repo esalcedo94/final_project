@@ -8,7 +8,7 @@ class CharacterForm(ModelForm):
         model = Character
         fields = ['name', 'lastEpisode', 'images']
 
-def character_list(request, template_name='character/character_list.html'):
+def character_list(request, template_name='character_list.html'):
     characters = Character.objects.all()
     data = {}
     data ['object_list'] = characters
