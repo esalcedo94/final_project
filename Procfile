@@ -1,1 +1,1 @@
-web: gunicorn rick_and_morty_app.wsgi --log-file -
+web: gunicorn crudapp.wsgi --log-file -
