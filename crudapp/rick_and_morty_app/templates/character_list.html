@@ -1,20 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".modal");
+        var instances = M.Modal.init(elems, options);
+      });
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rick and Morty</title>
   </head>
-  <body>
-    <div>
-      <h1>Rick and Morty Characters!</h1>
-      <ul>
+  <body
+    style="
+      background-image: url('https://wallpapercave.com/wp/wp1822750.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      font-family: 'Russo One', sans-serif;
+    "
+  >
+    <div class="container row">
+      <h1 class="grey-text text-lighten-5 center-align">
+        Rick and Morty Characters
+      </h1>
+      <div class="row">
         {% for character in object_list%}
-        <li>
-          <h3>Name: {{character.name}}</h3>
-        </li>
+        <div class="col s12 m5 l4">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="{{character.images.url}}" alt="{{character.title}}" />
+              <span class="card-title">{{character.name}}</span>
+              <a
+                class="btn-floating halfway-fab waves-effect waves-light black"
+                href="{% url 'character_edit' character.id %}"
+                ><i class="material-icons">mode_edit</i></a
+              >
+            </div>
+            <div class="card-content">
+              <p>
+                Last Episode on: {{character.lastEpisode}}
+              </p>
+            </div>
+            <div class="card-action">
+              <a
+                class="black-text"
+                href="{% url 'character_details' character.id %}"
+                >View</a
+              >
+              <a
+                class="black-text"
+                href="{% url 'character_delete' character.id %}"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
         {% endfor %}
-      </ul>
+      </div>
+    </div>
+    <div class="fixed-action-btn">
+      <a
+        class="btn-floating btn-large white"
+        href="{% url 'character_create' %}"
+      >
+        <i class="black-text large material-icons">add</i></a
+      >
     </div>
   </body>
 </html>

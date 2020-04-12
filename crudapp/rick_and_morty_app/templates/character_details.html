@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=>, initial-scale=1.0" />
+    <title>{{object.name}}</title>
+  </head>
+  <body
+    style="
+      background-image: url('https://wallpapercave.com/wp/wp1822750.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      font-family: 'Russo One', sans-serif;
+    "
+  >
+    <div class="container">
+      <h2 class="grey-text text-lighten-5 center-align">{{object.name}}</h2>
+      <h3 class="grey-text text-lighten-5 center-align">
+        Last Episode on: {{object.lastEpisode}}
+      </h3>
+      <img
+        style="
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 25em;
+        "
+        src="{{object.images.url}}"
+        alt="{{object.name}}"
+      />
+    </div>
+    <div class="fixed-action-btn">
+      <a
+        class="btn-floating btn-large waves-effect waves-light white"
+        href="{% url 'character_list'%}"
+        ><i class="black-text material-icons">home</i></a
+      >
+    </div>
+  </body>
+</html>

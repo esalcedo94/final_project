@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>View Character</title>
+  </head>
+  <body
+    style="
+      background-image: url('https://external-preview.redd.it/EwhpEQUZoe2KSMr43vmim-L09mHQXe3ft58SFJJDr98.jpg?s=62a9c778f7919d283b8d8b634904201a1988b46c');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    "
+  >
+    <div class="container">
+      <h1>New Character</h1>
+
+      <form class="col s12" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+          <div class="white input-field col s6">
+            <label for="name">Name</label>
+            {{form.name}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="white input-field col s6">
+            <label for="episode">Last Episode</label>
+            {{form.lastEpisode}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field">
+            {{form.images}}
+          </div>
+        </div>
+        <button
+          class="btn red waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+      <div class="fixed-action-btn">
+        <a
+          class="btn-floating btn-large waves-effect waves-light black"
+          href="{% url 'character_list'%}"
+          ><i class="material-icons">home</i></a
+        >
+      </div>
+    </div>
+  </body>
+</html>

@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rick_and_morty_app import views
+from rick_and_morty_app.views import HomePageView, CreateCharacterView, CharacterUpdate, CharacterDetailView, DeleteCharacter
+from django.conf import settings # new
+from django.conf.urls.static import static # new
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.character_list, name='character_list')
+    path('', HomePageView.as_view(), name='character_list'),
+    path('create/', CreateCharacterView.as_view(), name='character_create'),
+    path('update/<int:pk>', CharacterUpdate.as_view(), name='character_edit'),
+    path('character/<int:pk>', CharacterDetailView.as_view(), name='character_details'),
+    path('delete/<int:pk>', DeleteCharacter.as_view(), name='character_delete')
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
