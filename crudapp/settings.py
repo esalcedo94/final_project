@@ -27,7 +27,7 @@ SECRET_KEY = 'v_^p5m1b+s*mhbvzt0pj%mgvngb5f*7^d_$y#rs6ex2&^ku8)*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['rick-and-morty-tracker.herokuapp.com/']
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,9 +89,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-DATABASES['default'] = dj_database_url.config(default="postgres://lioxuhmgimzkkx:c17023f923cf146a00c702dd559753e6b8380434f0001d5a7c948cbb3c0ddafb@ec2-18-210-51-239.compute-1.amazonaws.com:5432/dd2me28eilv44i")
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -139,4 +137,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-django_heroku.settings(locals())
+prod_db  =  dj_database_url.config(default="postgres://lioxuhmgimzkkx:c17023f923cf146a00c702dd559753e6b8380434f0001d5a7c948cbb3c0ddafb@ec2-18-210-51-239.compute-1.amazonaws.com:5432/dd2me28eilv44i")
+DATABASES['default'].update(prod_db)
+
+
+# django_heroku.settings(locals())
