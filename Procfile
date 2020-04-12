@@ -1,1 +1,1 @@
-web: python manage.py runserver 0.0.0.0:$PORT --noreload
+web: gunicorn rick_and_morty_app.wsgi --log-file -
