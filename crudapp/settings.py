@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,7 +88,7 @@ DATABASES = {
     #     'PORT': '5432',
     # }
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+        default=config('postgres://lioxuhmgimzkkx:c17023f923cf146a00c702dd559753e6b8380434f0001d5a7c948cbb3c0ddafb@ec2-18-210-51-239.compute-1.amazonaws.com:5432/dd2me28eilv44i')
     )
 }
 
