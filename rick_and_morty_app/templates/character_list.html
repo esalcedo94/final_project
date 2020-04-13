@@ -39,14 +39,16 @@
         {% for character in object_list%}
         <div class="col s12 m5 l4">
           <div class="card medium hoverable">
-            <div class="card-image">
+            <div class="card-image" style="height: 180px;">
               <img src="{{character.images.url}}" alt="{{character.title}}" />
               <span class="card-title">{{character.name}}</span>
-              <a
-                class="btn-floating halfway-fab waves-effect waves-light black"
-                href="{% url 'character_edit' character.id %}"
-                ><i class="material-icons">mode_edit</i></a
-              >
+            </div>
+            <div class="card-fab" style="position: relative; z-index: 1;">
+                <a
+                  class="btn-floating halfway-fab waves-effect waves-light black"
+                  href="{% url 'character_edit' character.id %}"
+                  ><i class="material-icons">mode_edit</i></a
+                >
             </div>
             <div class="card-content">
               <p>
