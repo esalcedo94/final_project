@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rick_and_morty_app'
+    'rick_and_morty_app',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -135,8 +136,16 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-prod_db  =  dj_database_url.config(default="postgres://lioxuhmgimzkkx:c17023f923cf146a00c702dd559753e6b8380434f0001d5a7c948cbb3c0ddafb@ec2-18-210-51-239.compute-1.amazonaws.com:5432/dd2me28eilv44i")
-DATABASES['default'].update(prod_db)
+# prod_db  =  dj_database_url.config(default="postgres://lioxuhmgimzkkx:c17023f923cf146a00c702dd559753e6b8380434f0001d5a7c948cbb3c0ddafb@ec2-18-210-51-239.compute-1.amazonaws.com:5432/dd2me28eilv44i")
+# DATABASES['default'].update(prod_db)
 
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 django_heroku.settings(locals())
