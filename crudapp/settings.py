@@ -139,4 +139,4 @@ prod_db  =  dj_database_url.config(default="postgres://lioxuhmgimzkkx:c17023f923
 DATABASES['default'].update(prod_db)
 
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
