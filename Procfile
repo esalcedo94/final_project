@@ -1,1 +1,1 @@
-web: gunicorn crudapp.wsgi --log-file -
+web: gunicorn crudapp.wsgi
