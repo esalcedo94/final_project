@@ -22,12 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v_^p5m1b+s*mhbvzt0pj%mgvngb5f*7^d_$y#rs6ex2&^ku8)*'
+# SECRET_KEY = 'v_^p5m1b+s*mhbvzt0pj%mgvngb5f*7^d_$y#rs6ex2&^ku8)*'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://rick-and-morty-tracker.herokuapp.com/']
+ALLOWED_HOSTS = ['rick-and-morty-tracker.herokuapp.com']
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
